@@ -35,7 +35,7 @@ module Sequel
 end
 
 module Sequel
-	module Postgres
+	module Schema
 		class AlterTableGenerator
 			def add_location_trigger(options={})
 				@operations << {:op=>:create_location_function}.merge(options)

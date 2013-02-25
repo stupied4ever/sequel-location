@@ -35,7 +35,7 @@ module Sequel
 end
 
 module Sequel
-	module Schema
+	module Postgres
 		class AlterTableGenerator
 			def add_location_trigger(options={})
 				@operations << {:op=>:create_location_function}.merge(options)
@@ -48,7 +48,7 @@ module Sequel
 			end
 		end
 	end
-
+	module Postgres
 		class Database
 			def add_extension(name)
 				quoted_name = quote_identifier(name) if name
@@ -71,9 +71,10 @@ module Sequel
 				when :drop_location_function
 					self.run("DROP FUNCTION update_#{table.to_s}_ll_point();")
 				else
-					super(table,op)
+					super.alter_table_sql(table,op)
 				end
 			end
+		end
 	end
 end
 

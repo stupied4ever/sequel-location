@@ -49,7 +49,6 @@ module Sequel
 		end
 	end
 
-	module Postgres
 		class Database
 			def add_extension(name)
 				quoted_name = quote_identifier(name) if name
@@ -75,7 +74,6 @@ module Sequel
 					super(table,op)
 				end
 			end
-		end
 	end
 end
 

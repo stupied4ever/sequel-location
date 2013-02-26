@@ -10,11 +10,11 @@ gem install sequel-location
 ````
 
 ##Usage
-sequel-location gives you access to a single dataset method, few helpers for doing the database
+sequel-location gives you access to a single dataset method, a few helpers for doing the database
 setup in migrations, and a nice syntax for configuring the plugin.
 
 ###Querying
-Say you have an application that lets a user find the nearest bar to them (within ten miles). The resulting
+For example, say you have an application that lets a user find the nearest bar to them (within ten miles). The resulting
 query on your `Bar` model would be as follows.
 
 ````ruby
@@ -57,10 +57,10 @@ end
 ````
 
 You can specify the `:latitude` and `:longitude` parameters if you store your latitude and longitude in a
-different column (e.g. `plugin :location :latitude=>:lat, :longitude=>:lng`)
+different column (e.g. `plugin :location :latitude=>:lat, :longitude=>:lng`).
 
 You can also specify a `:earth_point` parameter if you want to cache your earth point in a different column
-than `ll_point` (`plugin :location :earth_point=>:latitude_longitude_point_cache`)
+than `ll_point` (`plugin :location :earth_point=>:latitude_longitude_point_cache`).
 
-**NOTE: If you specify a different latitude, longitude, or earth_point column, you need your migration to reflect the changes in the plugin configuration**
+**NOTE: If you specify a different latitude, longitude, or earth_point column, you need your migration to reflect the changes in the plugin configuration.**
 

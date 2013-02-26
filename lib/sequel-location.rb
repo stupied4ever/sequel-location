@@ -34,7 +34,7 @@ end
 
 module Sequel
 	module Postgres
-		class AlterTableGenerator
+		class AlterTableGenerator < Sequel::Schema::AlterTableGenerator
 			def add_location_trigger(options={})
 				@operations << {:op=>:create_location_function}.merge(options)
 				@operations << {:op=>:create_location_trigger}
@@ -46,7 +46,7 @@ module Sequel
 			end
 		end
 
-		class Database
+		class Database < Sequel::Database
 			def add_extension(name)
 				quoted_name = quote_identifier(name) if name
 				run("CREATE EXTENSION IF NOT EXISTS #{quoted_name}")

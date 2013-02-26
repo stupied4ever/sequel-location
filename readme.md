@@ -5,7 +5,7 @@ This gem gives you an easy setup and syntax for doing geolocation search in sequ
 
 ##Installation
 
-````bash
+````ruby
 gem install sequel-location
 ````
 

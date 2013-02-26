@@ -24,7 +24,7 @@ Bar.nearest(43.038513,-87.908913,10)
 ###Setup
 
 ````ruby
-Sequel.extension :pg_location
+DB.extension :pg_location
 ````
 
 ````ruby

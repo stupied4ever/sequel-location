@@ -24,12 +24,9 @@ Bar.nearest(43.038513,-87.908913,10)
 ###Setup
 
 ````ruby
-DB.extension :pg_location
-````
-
-````ruby
 Sequel.migration do
 	up do
+		extension :pg_location
 		add_extension :cube						# required for earthdistance
 		add_extension :earthdistance			# required for geolocation
 		add_location_trigger :bars				# provided by sequel-location to auto-calculate the earth point on update of latitude or longitude
@@ -42,6 +39,7 @@ Sequel.migration do
 	end
 
 	down do
+		extension :pg_location
 		alter_table :bars do
 			drop_index :ll_point
 			drop_column :ll_point

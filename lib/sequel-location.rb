@@ -19,9 +19,7 @@ module Sequel
 
 			module DatasetMethods
 				def nearest(lat,lng,radius)
-
 					location_cache_field = model.location_cache_field
-
 					radius_in_km = (radius.to_i * 1609.3).to_f
 					lat = lat.to_f
 					lng = lng.to_f
@@ -35,7 +33,7 @@ module Sequel
 end
 
 module Sequel
-	module Schema
+	module Postgres
 		class AlterTableGenerator
 			def add_location_trigger(options={})
 				@operations << {:op=>:create_location_function}.merge(options)
@@ -47,8 +45,7 @@ module Sequel
 				@operations << {:op=>:drop_location_function}
 			end
 		end
-	end
-	module Postgres
+
 		class Database
 			def add_extension(name)
 				quoted_name = quote_identifier(name) if name
@@ -71,7 +68,7 @@ module Sequel
 				when :drop_location_function
 					self.run("DROP FUNCTION update_#{table.to_s}_ll_point();")
 				else
-					super.alter_table_sql(table,op)
+					super(table,op)
 				end
 			end
 		end

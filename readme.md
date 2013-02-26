@@ -1,6 +1,8 @@
 #sequel-location
 This gem gives you an easy setup and syntax for doing geolocation search in sequel.
 
+**IMPORTANT: This will only work for postgres databases**
+
 ##Installation
 
 ````bash

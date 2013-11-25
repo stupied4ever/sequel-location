@@ -15,6 +15,8 @@ module Sequel
 					super
 					subclass.instance_variable_set(:@location_cache_field, instance_variable_get(:@location_cache_field))
 				end
+
+				Plugins.def_dataset_methods(self, :nearest)
 			end
 
 			module DatasetMethods

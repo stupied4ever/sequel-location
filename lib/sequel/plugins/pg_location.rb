@@ -22,7 +22,7 @@ module Sequel
 			module DatasetMethods
 				def nearest(lat,lng,radius)
 					location_cache_field = model.location_cache_field
-					radius_in_km = (radius.to_i * 1609.3).to_f
+					radius_in_km = radius.to_f * 1609.3
 					lat = lat.to_f
 					lng = lng.to_f
 					where("earth_box(ll_to_earth(?,?),?) @> #{location_cache_field}", lat, lng, radius_in_km).where("earth_distance(ll_to_earth(?, ?), #{location_cache_field}) < ?", lat, lng, radius_in_km).select_append{

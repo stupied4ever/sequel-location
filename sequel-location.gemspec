@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'sequel-location'
-  s.version     = '0.0.3'
-  s.date        = '2014-02-03'
+  s.version     = '0.0.4'
+  s.date        = '2014-02-04'
   s.summary     = "sequel-location"
   s.description = "Add support for geolocation search to sequel models"
   s.authors     = ["Nick Gartmann"]

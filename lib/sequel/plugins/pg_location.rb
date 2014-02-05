@@ -26,8 +26,8 @@ module Sequel
 					lat = lat.to_f
 					lng = lng.to_f
 					where("earth_box(ll_to_earth(?,?),?) @> #{location_cache_field}", lat, lng, radius_in_km).where("earth_distance(ll_to_earth(?, ?), #{location_cache_field}) < ?", lat, lng, radius_in_km).select_append{
-						(Sequel.function(:earth_distance, Sequel.function(:ll_to_earth,lat,lng), location_cache_field).as('distance'))
-						}.order('distance')
+						(Sequel::SQL::AliasedExpression.new(Sequel.function(:earth_distance, Sequel.function(:ll_to_earth,lat,lng), location_cache_field), :distance))
+						}.order(:distance)
 				end
 			end
 		end

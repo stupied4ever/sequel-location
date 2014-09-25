@@ -18,7 +18,8 @@ For example, say you have an application that lets a user find the nearest bar t
 query on your `Bar` model would be as follows.
 
 ````ruby
-Bar.nearest(43.038513,-87.908913,10)
+Bar.nearest(43.038513,-87.908913,10) # orders results by distance to location
+Bar.within(43.038513,-87.908913,10)  # will not order results by distance
 ````
 
 ###Setup

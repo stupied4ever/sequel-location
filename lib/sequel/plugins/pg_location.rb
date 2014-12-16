@@ -31,11 +31,11 @@ module Sequel
 
         def within(lat,lng,radius)
           location_cache_field = model.location_cache_field
-          radius_in_km = radius.to_f * 1609.3
+          radius_in_meters = radius.to_f * 1609.3
           lat = lat.to_f
           lng = lng.to_f
 
-          where("earth_box(ll_to_earth(?,?),?) @> #{location_cache_field}", lat, lng, radius_in_km).where("earth_distance(ll_to_earth(?, ?), #{location_cache_field}) < ?", lat, lng, radius_in_km)
+          where("earth_box(ll_to_earth(?,?),?) @> #{location_cache_field}", lat, lng, radius_in_meters).where("earth_distance(ll_to_earth(?, ?), #{location_cache_field}) < ?", lat, lng, radius_in_meters)
         end
       end
     end

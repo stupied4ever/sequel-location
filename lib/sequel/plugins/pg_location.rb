@@ -26,7 +26,7 @@ module Sequel
           within(lat, lng, radius)
           .select_append{
             (Sequel::SQL::AliasedExpression.new(Sequel.function(:earth_distance, Sequel.function(:ll_to_earth,lat,lng), location_cache_field), :distance))
-          }.order(:distance.asc)
+          }.order(Sequel.asc(Sequel.lit("distance")))
         end
 
         def within(lat,lng,radius)

@@ -31,7 +31,7 @@ module Sequel
 
         def within(lat,lng,radius)
           location_cache_field = model.location_cache_field
-          radius_in_meters = radius.to_f * 1609.3
+          radius_in_meters = radius.to_f
           lat = lat.to_f
           lng = lng.to_f
 

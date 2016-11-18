@@ -73,3 +73,18 @@ end
 
 You may specify any combination of the `latitude`, `longitude`, or `earth_point` options **but you must specify the same values in
 your model plugin (if you're using one)**
+
+### Pagination problem
+
+There is a attention point when you are using the gem and paginating the result (exclusively with postgres). The problem 
+is not caused by the gem, but by postgres (when pagination is ordered with two or more records with the same order value). 
+
+The issue is described on this StackOverflow 
+[issue](http://stackoverflow.com/questions/13580826/postgresql-repeating-rows-from-limit-offset). 
+
+tldr;
+
+Just include one other order query to distinct records with same distance:
+```
+Model.near_within(@latitude, @longitude, 10_000).paginate(page.to_i, 12).order_append(:id)
+```
